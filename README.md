@@ -1,8 +1,12 @@
-Project-cw-b23
+Peperfry Clone
 
+### Fuctionality worked on-
 
-backend-daljeet
-admin-vikram
-homepage-biswadip
-productand single product -aniket
-cart and chekcout -vicky
+| Team members | Functionality |
+| ------ | ------ |
+| Aniket Parmar | Product Page & Single Product Page |
+| Daljeet Singh | Backend|
+| Biswadip Roy | HomePage & Login |
+| Vicky Das| Cart&Checkout&Wishlist |
+| Vikram kumar | Admin Panel |
+
