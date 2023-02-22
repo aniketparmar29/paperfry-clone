@@ -1,0 +1,80 @@
+#sidebar {
+  width: 20%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  border-right: 1px solid rgb(219, 218, 218);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+#sidebar_logo {
+  width: 60%;
+}
+
+.sidebar_flex {
+  margin: 5px 15px;
+  padding: 5px;
+}
+
+.sidebar_flex:hover {
+  background-color: rgb(231, 229, 229);
+  color: rgb(91, 91, 238);
+}
+
+.sidebar_icon {
+  width: 10%;
+}
+
+.sidebar_link {
+  font-size: 17px;
+  font-weight: 400;
+  padding-left: 15px;
+}
+
+/* Product navbar */
+
+#navbar {
+  width: 80%;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid gray;
+  justify-content: space-between;
+  position: fixed;
+  left: 20%;
+  top: 0px;
+  z-index: 10;
+}
+
+#navbar_select {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar_auth {
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar_icon {
+  width: 15%;
+}
+
+.navbar_link {
+  font-size: 17px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+#add_product {
+  display: flex;
+  align-items: center;
+}
+
+#plus {
+  font-size: 23px;
+  margin-right: 4px;
+}
