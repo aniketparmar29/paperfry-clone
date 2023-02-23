@@ -1,7 +1,7 @@
 import {GET_PRODUCT_FAILURE,GET_PRODUCT_REQUEST,GET_PRODUCT_SUCCESS} from "./actionTypes";
 
 const initialState = {
-    clothing: [],
+    opp: [],
     isLoading:false,
     isError:false,
 }
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
             return { ...state,isLoading: true}
         }
         case GET_PRODUCT_SUCCESS: {
-            return {...state,clothing: payload,isLoading: false}
+            return {...state,opp: payload,isLoading: false}
         }
         case GET_PRODUCT_FAILURE: {
             return {...state,isError: true,isLoading: false}
