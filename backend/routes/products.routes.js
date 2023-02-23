@@ -3,10 +3,10 @@ const Product = require("../models/produce.model")
 const productRoutes = express.Router()
 
 productRoutes.get("/",async(req,res)=>{
-    console.log(req.params)
     try{
-        let items = ["63f77455badf66f9eda24d6e","63f77455badf66f9eda24db4","63f77455badf66f9eda24d73"]
-        let allProducts = await Product.find({_id:{$in:items}})
+        const {page} = req.query;
+      const skip = (page-1)*20;
+        let allProducts = await Product.find().sort({_id: -1}).skip(skip).limit(20)
         res.send({msg:'success',data:allProducts})
     }catch(er){
         res.sned({msg:"something went wrong"})

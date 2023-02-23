@@ -2,11 +2,14 @@
 POST:  base_URL/user/register    => for registering new User;
 POST:   base_URL/user/login    =>will give token {which can be used to login or logout user from frontend}
 
-====CART ====
+====CART ====:
 
-GET: base_URL/user/cart   =>  expects  will give all the items in the cart of  a user.
-PATCH: base_URL/cart =>  expects:{  param:(id : user's id);  body: (cart: [ ...user.cart,"id of the product which was added to cart"])}  
-use cases of : {PATCH:base_URL/cart}
+GET: base_URL/user/cart =>  expects header as Bearer token; gives all products of cart as array
+
+PATCH: base_URL/user/cart =>  expects header as Bearer token and {body: (cart:[cart items array])}  
+
+use cases of : {PATCH:base_URL/uesr/cart}
+
 adding item in the cart :=> param :( id: user's id) and [updated cart (cart_items+1) ]
 deleting an item from cart => param:(id:user's id) and [updated cart (cart_items-1) ]
  
