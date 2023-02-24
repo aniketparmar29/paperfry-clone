@@ -24,7 +24,7 @@ const ProductNavbar = () => {
           </select>
         </Box>
         <Box id="add_product">
-          <Link to={"/addproduct"}>
+          <Link to={"/admin/addproduct"}>
             <Button>
               <span id="plus">+</span> New Product
             </Button>
