@@ -13,6 +13,7 @@ import Pricing from "../Admin/Pages/Pricing";
 import Product from "../Admin/Pages/Product";
 import Signup from "../Admin/Pages/Signup";
 import Pagenotfound from "./PagenotFound";
+import EditProduct from "../Admin/Pages/EditProduct";
 function MainRoutes() {
   return (
     <div>
@@ -29,6 +30,7 @@ function MainRoutes() {
         <Route path={"/admin/discount"} element={<Discount />} />
         <Route path={"/admin/giftcard"} element={<GiftCard />} />
         <Route path={"/admin/pricing"} element={<Pricing />} />
+        <Route path="/admin/editproduct/:id" element={<EditProduct />} />
         <Route path={"/admin/addproduct"} element={<AddProduct />} />
         <Route path="*" element={<Pagenotfound />}></Route>
       </Routes>
