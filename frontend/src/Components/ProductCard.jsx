@@ -36,7 +36,7 @@ function ProductCard({ product ,query}) {
         </button>
         <div className="rating absolute bottom-0 right-0 bg-white rounded-xl p-1 m-1 flex items-center">
           <RatingBar rating={rating} />
-          <p className="ml-2">{ratcout}</p>
+          <p className="ml-2">{rat || ratcout}</p>
         </div>
       </div>
       <h3 className="text-left">{product.title}</h3>

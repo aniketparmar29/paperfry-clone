@@ -53,3 +53,7 @@
   height: 100%;
   background-color: #f5f
 }
+.thumbnail:hover {
+  border-color: blue;
+  cursor: pointer;
+}
