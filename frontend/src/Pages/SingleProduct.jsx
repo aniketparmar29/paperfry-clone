@@ -21,7 +21,7 @@ function SingleProduct() {
   }
 
   if (!product) {
-    return <div>Loading...</div>;
+    return         <img className="w-[50%] m-auto" src="https://ii1.pepperfry.com/img/grey.gif" alt="loading" />;
   }
 
   return (
