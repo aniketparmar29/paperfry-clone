@@ -25,14 +25,14 @@ export const _addCardItem = (data) =>{
 
 
 // products
-const Product = () =>{
-    const dispatch = useDispatch();
-    const {product:{product}} = useSelector((ob)=>obj);
-    useEffecct(()=>{
-        // get data from the API
-    })
+// const Product = () =>{
+//     const dispatch = useDispatch();
+//     const {product:{product}} = useSelector((ob)=>obj);
+//     useEffecct(()=>{
+//         // get data from the API
+//     })
 
-    addCardItem = (item)=>{
-        console.log(item)
-    }
-}
+//     addCardItem = (item)=>{
+//         console.log()
+//     }
+// }
