@@ -13,11 +13,11 @@ const getProductFailureAction=()=>{
     return{type:GET_PRODUCT_FAILURE}
 }
 
-export const getProducts = () => {
+export const getProducts = (query) => {
     return (dispatch) => {
         dispatch(getProductRequestAction())
 
-        axios.get("https://papperfryclone.vercel.app/products").then((res)=>{
+        axios.get(`https://long-plum-coyote-gown.cyclic.app/products?category=${query}`).then((res)=>{
             dispatch(getProductSuccesAction(res.data))
         }).catch((err)=>{
             dispatch(getProductFailureAction())

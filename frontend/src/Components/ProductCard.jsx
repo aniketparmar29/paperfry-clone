@@ -2,13 +2,28 @@ import React from 'react';
 import { BsHeart } from 'react-icons/bs';
 import RatingBar from './RatingBar';
 
-function ProductCard({ product }) {
+function ProductCard({ product ,query}) {
+  if(product.title==="Diego Fabric 3 Seater Sofa In Denim Blue Colour"){
+    return;
+  }
+  if(product.title==="Siramika Sheesham Wood 3 Seater Sofa In Honey Oak Finish"){
+    return;
+  }
+  console.log(product.brand)
   const rating = (Math.random() * 5) + 1;
-
+  const rat = Math.floor(Math.random()*500)+1;
+  let ratcout;
+  for(let key in product){
+    if(key=="rating-count"){
+      ratcout=product[key];
+    }else{
+      ratcout=rat;
+    }
+  }
   return (
     <div className="w-80">
       <div style={{ position: "relative" }}>
-        <img src={product.images || product.images2 || product.images3 || product.images4 || product.images5 || product.images6 || product.images7 || product.images8 || `https://source.unsplash.com/random/?${product.category}` || "https://ii1.pepperfry.com/img/grey.gif"} alt={product.title} />
+        <img src={product.images[0] || product.images[1] || product.images[2] || product.images[3] || product.images[4] || `https://source.unsplash.com/random/?${query}` || "https://ii1.pepperfry.com/img/grey.gif"} alt={product.title} />
         <button className="bg-orange-500 text-white font-bold z-10 p-3 rounded absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 transition duration-300">
           Add To Cart
         </button>
@@ -17,14 +32,14 @@ function ProductCard({ product }) {
         </button>
         <div className="rating absolute bottom-0 right-0 bg-white rounded-xl p-1 m-1 flex items-center">
           <RatingBar rating={rating} />
-          <p className="ml-2">{product.ratingcount}</p>
+          <p className="ml-2">{ratcout}</p>
         </div>
       </div>
       <h3 className="text-left">{product.title}</h3>
       <p className="text-gray-500 text-left">{product.brand}</p>
       <div className="flex gap-x-2">
         <h4 className="text-[rgb(255,124,70)] text-lg font-bold">
-          ₹{product.priceoffer}
+          ₹{product.price_offer}
         </h4>
         <h4 className="line-through text-lg">₹{product.mrp}</h4>
       </div>
