@@ -3,10 +3,11 @@ const authproduct = async(req,res,next)=>{
 if(req.method!=="GET"){
     let authToken = (req.headers.authorization).split(" ")[1]
    let verify = await jwt.verify(authToken,process.env.SECURE_KEY)
-    console.log(verify)
-//  res.send("hello wait")
-next()
-
+    if(verify){
+        next()
+    }else{
+        res.status(404).send({msg:"authencation required"})
+    }
 }else{
  next()
 }
