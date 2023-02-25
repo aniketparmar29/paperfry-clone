@@ -13,14 +13,16 @@ import Pricing from "../Admin/Pages/Pricing";
 import Product from "../Admin/Pages/Product";
 import Signup from "../Admin/Pages/Signup";
 import Pagenotfound from "./PagenotFound";
-import EditProduct from "../Admin/Pages/EditProduct";
+import SingleProduct from './SingleProduct'
+import EditProduct from '../Admin/Pages/EditProduct';
 function MainRoutes() {
   return (
     <div>
       {/* <AdminMainRoute /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/product" element={<ProductPage />}></Route>
+        <Route path="/product/:query" element={<ProductPage />} />
+        <Route path="/product/op/:id" element={<SingleProduct />} />
         <Route path={"/admin"} element={<Admin />} />
         <Route path={"/admin/product"} element={<Product />} />
         <Route path={"/admin/order"} element={<Order />} />
