@@ -3,9 +3,14 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   border-right: 1px solid rgb(219, 218, 218);
+  background-color: white;
+  position: relative;
+  top: 0px;
+  left: 0px;
   position: fixed;
   top: 0px;
   left: 0px;
+  z-index: 10;
 }
 
 #sidebar_logo {
@@ -40,6 +45,9 @@
   background-color: white;
   border-bottom: 1px solid gray;
   justify-content: space-between;
+  position: relative;
+  top: 0px;
+  left: 20%;
   position: fixed;
   left: 20%;
   top: 0px;
@@ -77,4 +85,75 @@
 #plus {
   font-size: 23px;
   margin-right: 4px;
+}
+
+#product {
+  position: relative;
+  top: 60px;
+  left: 20%;
+}
+
+/* Add Product */
+
+#form {
+  width: 30%;
+  margin: auto;
+  /* border: 1px solid green; */
+  display: grid;
+  margin-top: 50px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.form_input {
+  border-bottom: 1px solid rgb(173, 173, 173);
+  width: 100%;
+  padding: 5px;
+  background-color: pink;
+  border-radius: 20px;
+}
+
+.form_input:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#form_logo {
+  text-align: center;
+}
+
+#form_logo h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+#product_form {
+  margin: 10px;
+}
+
+#form_button {
+  border: 0px;
+  margin: 10px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 17px;
+  background-color: teal;
+  color: white;
+}
+
+#form_button:hover {
+  border: 2px solid teal;
+  background: transparent;
+  color: teal;
+  cursor: pointer;
+}
+
+/*Product Table*/
+
+#edit {
+  font-size: 17px;
+  margin-right: 5px;
+}
+
+#close {
+  font-size: 17px;
+  margin-left: 5px;
 }

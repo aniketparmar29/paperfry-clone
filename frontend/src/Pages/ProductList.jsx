@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import ProductCard from "../Components/ProductCard";
-import { getProducts } from "../Redux/ProductReducer/action";
 
-const ProductList = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((store) => store.ProductReducer.opp);
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-
-  const filteredProducts = products.filter((product) => product.category === "Queen Bed Foldable Mattresses");
-
+const ProductList = ({products,query}) => {
   return (
-    <div className="w-full grid grid-cols-2 mt-8 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center  " >
-      {filteredProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div className="w-[80%] grid grid-cols-2 mt-8 sm:grid-cols-2 gap-10 lg:grid-cols-3">
+      {products ? (
+        products.map((product) => (
+          <ProductCard key={product._id} product={product} query={query} />
+        ))
+      ) : (
+        <p>No products found</p>
+      )}
     </div>
   );
 };
