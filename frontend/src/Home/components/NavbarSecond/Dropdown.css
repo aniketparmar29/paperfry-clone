@@ -1,0 +1,101 @@
+.tabbarParent {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 1px 0px #E7E7E7;
+  }
+  
+  .mainDiv {
+    max-width: 1070px;
+    height: 48px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+  }
+  
+  .category {
+    min-width: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+  .category > p {
+    height: 18px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.06em;
+    color: #000000;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  
+  .category:hover p {
+    color: black;
+    font-weight: 600;
+    transition: all 0.1s ease;
+  }
+  
+  .category:hover {
+    border-bottom: 2px solid orangered;
+    transition: all 0.3s ease;
+  }
+  
+  .subCategory {
+    max-width: 1100px;
+    margin-left: 180px;
+    border: 1px solid #e7e7e7;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    z-index: 2;
+    background-color: white;
+    position: absolute;
+  }
+  
+  .uldiv {
+    width: 156px;
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  .uldiv p {
+    margin: 0px;
+    font-weight: 600;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.06em;
+    color: #000000;
+    padding:10px 0px;
+  }
+  
+  .uldiv ul {
+    margin-top: 10px;
+  }
+  
+  .uldiv ul li {
+    list-style: none;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.06em;
+    color: #000000;
+    cursor: pointer;
+  }
+  
+  .uldiv ul li:hover {
+    color: orangered;
+  }
+  
+  .uldiv:nth-child(2n) {
+    background-color: #f1f1f1;
+  }
