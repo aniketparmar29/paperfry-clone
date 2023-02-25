@@ -12,6 +12,12 @@ import {
 } from "@chakra-ui/react";
 
 import { AiOutlineClose, AiFillEdit } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  deleteProduct,
+  getProduct,
+} from "../../Redux/Admin/AdminProduct/action";
 
 const ProductTable = ({
   image,
@@ -21,7 +27,15 @@ const ProductTable = ({
   price,
   inventory,
   availability,
+  id,
 }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteProduct(id)).then(() => dispatch(getProduct()));
+  };
+
   return (
     <TableContainer width={"80%"}>
       <Table variant="striped">
@@ -29,6 +43,7 @@ const ProductTable = ({
           <Tr>
             <Th>Image</Th>
             <Th>Title</Th>
+            <Th>Price</Th>
             <Th>Brand</Th>
             <Th>Category</Th>
             <Th>Inventory</Th>
@@ -42,6 +57,7 @@ const ProductTable = ({
               <img src={image} alt="" />
             </Td>
             <Td>{name}</Td>
+            <Td>₹ {price}</Td>
             <Td>{brand}</Td>
             <Td>{category}</Td>
             <Td>{inventory}</Td>
@@ -53,10 +69,13 @@ const ProductTable = ({
               )}
             </Td>
             <Td>
-              <button id="edit">
+              <button
+                id="edit"
+                onClick={() => navigate(`/admin/editproduct/${id}`)}
+              >
                 <AiFillEdit />
               </button>
-              <button id="close">
+              <button id="close" onClick={handleDelete}>
                 <AiOutlineClose />
               </button>
             </Td>

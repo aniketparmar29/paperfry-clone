@@ -1,49 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import "../Style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import logo from "../Images/logo.png";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../../Redux/Admin/AdminProduct/action";
+import "../Style.css";
+import {
+  getProduct,
+  updateProduct,
+} from "../../Redux/Admin/AdminProduct/action";
 import Sidebar from "../Components/Sidebar";
 
-const AddProduct = () => {
+const EditProduct = () => {
+  const { id } = useParams();
+  const product = useSelector((store) => store.AdminProduct.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [product, setProduct] = useState({
+
+  const [currentProduct, setCurrentProduct] = useState({
     image: "",
     name: "",
     brand: "",
     category: "",
     price: "",
     inventory: "",
-    availability: true,
   });
 
   let name, value;
   const getProductValue = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setProduct({ ...product, [name]: value });
+    setCurrentProduct({ ...product, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      (product.image,
-      product.name,
-      product.brand,
-      product.category,
-      product.price,
-      product.inventory)
-    ) {
-      dispatch(addProduct(product));
-    } else {
-      alert("Please fill all the details");
-    }
-    setProduct("");
+    dispatch(updateProduct(id, currentProduct)).then(() =>
+      navigate("/admin/product")
+    );
   };
+
+  useEffect(() => {
+    if (product.length === 0) {
+      dispatch(getProduct());
+    }
+  }, [dispatch, product.length]);
+
+  useEffect(() => {
+    if (id) {
+      const mall = product.find((item) => item.id == id);
+      mall && setCurrentProduct(mall);
+    }
+  }, [id, product]);
 
   return (
     <div>
@@ -57,7 +66,7 @@ const AddProduct = () => {
         </Flex>
         <div id="form_logo">
           <img src={logo} alt="" width={"70%"} />
-          <h2>Add Product</h2>
+          <h2>Update Product</h2>
         </div>
         <form onSubmit={handleSubmit} id="product_form">
           <div>
@@ -68,7 +77,7 @@ const AddProduct = () => {
               type="url"
               placeholder="Image.url"
               name="image"
-              value={product.image}
+              value={currentProduct.image}
               onChange={getProductValue}
             />
           </div>
@@ -80,7 +89,7 @@ const AddProduct = () => {
               type="text"
               placeholder="Title"
               name="name"
-              value={product.name}
+              value={currentProduct.name}
               onChange={getProductValue}
             />
           </div>
@@ -92,7 +101,7 @@ const AddProduct = () => {
               type="text"
               placeholder="Brand"
               name="brand"
-              value={product.brand}
+              value={currentProduct.brand}
               onChange={getProductValue}
             />
           </div>
@@ -104,7 +113,7 @@ const AddProduct = () => {
               type="text"
               placeholder="Category"
               name="category"
-              value={product.category}
+              value={currentProduct.category}
               onChange={getProductValue}
             />
           </div>
@@ -116,7 +125,7 @@ const AddProduct = () => {
               type="number"
               placeholder="Price"
               name="price"
-              value={product.price}
+              value={currentProduct.price}
               onChange={getProductValue}
             />
           </div>
@@ -128,15 +137,33 @@ const AddProduct = () => {
               type="text"
               placeholder="Inventory"
               name="inventory"
-              value={product.inventory}
+              value={currentProduct.inventory}
               onChange={getProductValue}
             />
           </div>
-          <input type="submit" id="form_button" />
+          <div>
+            <label>Availability</label>
+            <select
+              className="form_input"
+              onChange={(e) => {
+                const newAvailability =
+                  e.target.value === "true" ? true : false;
+                setCurrentProduct({
+                  ...currentProduct,
+                  availability: newAvailability,
+                });
+              }}
+              value={currentProduct.availability}
+            >
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </div>
+          <input type="submit" id="form_button" value="Update" />
         </form>
       </div>
     </div>
   );
 };
 
-export default AddProduct;
+export default EditProduct;

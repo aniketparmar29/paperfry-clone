@@ -1,7 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../Components/ProductCard";
 import ProductNavbar from "../Components/ProductNavbar";
 import Sidebar from "../Components/Sidebar";
 import { getProduct } from "../../Redux/Admin/AdminProduct/action";

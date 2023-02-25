@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-
 const userSchema = mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
@@ -8,6 +7,8 @@ const userSchema = mongoose.Schema({
     city:{type:String},
     address:{type:String},
     cart:{type:Array},
+    wishlist:{type:Array},
+    orders:{type:Array}
 })
 const User = mongoose.model("user",userSchema);
 module.exports = User
