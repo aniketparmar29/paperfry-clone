@@ -18,7 +18,7 @@ export const getProducts = (query) => {
         dispatch(getProductRequestAction())
 
         axios.get(`https://long-plum-coyote-gown.cyclic.app/products?category=${query}`).then((res)=>{
-            dispatch(getProductSuccesAction(res.data))
+            dispatch(getProductSuccesAction(res.data.data))
         }).catch((err)=>{
             dispatch(getProductFailureAction())
         })

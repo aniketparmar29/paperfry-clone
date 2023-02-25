@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsHeart } from 'react-icons/bs';
 import RatingBar from './RatingBar';
-
+import { Link } from 'react-router-dom';
 function ProductCard({ product ,query}) {
   if(product.title==="Diego Fabric 3 Seater Sofa In Denim Blue Colour"){
     return;
@@ -9,7 +9,9 @@ function ProductCard({ product ,query}) {
   if(product.title==="Siramika Sheesham Wood 3 Seater Sofa In Honey Oak Finish"){
     return;
   }
-  console.log(product.brand)
+  if(product.title==="White Plastic Geographical Map Table Globe"){
+    return;
+  }
   const rating = (Math.random() * 5) + 1;
   const rat = Math.floor(Math.random()*500)+1;
   let ratcout;
@@ -23,7 +25,9 @@ function ProductCard({ product ,query}) {
   return (
     <div className="w-80">
       <div style={{ position: "relative" }}>
+      <Link to={`/product/op/${product._id}`}>
         <img src={product.images[0] || product.images[1] || product.images[2] || product.images[3] || product.images[4] || `https://source.unsplash.com/random/?${query}` || "https://ii1.pepperfry.com/img/grey.gif"} alt={product.title} />
+        </Link>
         <button className="bg-orange-500 text-white font-bold z-10 p-3 rounded absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 transition duration-300">
           Add To Cart
         </button>
