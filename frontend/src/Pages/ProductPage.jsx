@@ -13,7 +13,7 @@ const ProductPage = () => {
   const isMobileOrTablet = /Mobile|Tablet/i.test(navigator.userAgent);
 
   useEffect(() => {
-    dispatch(getProducts(query));
+    // dispatch(getProducts(query));
   }, [dispatch, query]);
 
   const handleCheckboxChange = (event) => {

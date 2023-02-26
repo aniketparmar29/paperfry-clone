@@ -7,11 +7,12 @@ import Admin from "../Admin/Pages/Admin";
 import Customer from "../Admin/Pages/Customer";
 import Discount from "../Admin/Pages/Discount";
 import GiftCard from "../Admin/Pages/GiftCard";
-import Login from "../Admin/Pages/Login";
+import Login from "./Components/Login";
+import Signup from "./Components/Signup";
 import Order from "../Admin/Pages/Order";
 import Pricing from "../Admin/Pages/Pricing";
 import Product from "../Admin/Pages/Product";
-import Signup from "../Admin/Pages/Signup";
+// import Signup from "../Admin/Pages/Signup";
 import Pagenotfound from "./PagenotFound";
 import SingleProduct from './SingleProduct'
 import EditProduct from '../Admin/Pages/EditProduct';
@@ -21,13 +22,16 @@ function MainRoutes() {
       {/* <AdminMainRoute /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+
         <Route path="/product/:query" element={<ProductPage />} />
         <Route path="/product/op/:id" element={<SingleProduct />} />
         <Route path={"/admin"} element={<Admin />} />
         <Route path={"/admin/product"} element={<Product />} />
         <Route path={"/admin/order"} element={<Order />} />
         <Route path={"/admin/customet"} element={<Customer />} />
-        <Route path={"/admin/signup"} element={<Signup />} />
+        {/* <Route path={"/admin/signup"} element={<Signup />} /> */}
         <Route path={"/admin/login"} element={<Login />} />
         <Route path={"/admin/discount"} element={<Discount />} />
         <Route path={"/admin/giftcard"} element={<GiftCard />} />

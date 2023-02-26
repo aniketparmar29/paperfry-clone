@@ -16,7 +16,7 @@ function ProductCard({ product ,query}) {
   const rat = Math.floor(Math.random()*500)+1;
   let ratcout;
   for(let key in product){
-    if(key=="rating-count"){
+    if(key==="rating-count"){
       ratcout=product[key];
     }else{
       ratcout=rat;

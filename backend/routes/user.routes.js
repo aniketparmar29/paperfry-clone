@@ -36,7 +36,7 @@ userRoute.post("/login",async(req,res)=>{
                 let token = jwt.sign({id:userExist[0]._id},process.env.SECURE_KEY)
                 res.send({token:token})
             }else{
-                res.send({data:isMathched})
+                res.status(404).send({msg:"invalid Credentials"})
             }
         }else{
             res.status(404).send({msg:"invalid Credentials"})
