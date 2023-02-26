@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import Carousel from 'react-elastic-carousel';
+// import Carousel from 'react-elastic-carousel';
 import { SliderData } from './SliderData';
 
 const Button = styled.button`
@@ -28,7 +28,7 @@ const ImageSlider = () => {
     
     return (
       <div style={{width: "950px", height: "450px"}}>
-        <Carousel
+        {/* <Carousel
           ref={carouselRef}
           itemsToShow={1}
           showArrows={false}
@@ -36,8 +36,8 @@ const ImageSlider = () => {
           enableAutoPlay
           autoPlaySpeed={3000}
           onChange={(currentItem) => setActiveItemIndex(currentItem.index)}
-        >
-
+        > */}
+{/* 
           {SliderData.map((item, i) => (
             <div key={i}>
               <div>
@@ -46,7 +46,7 @@ const ImageSlider = () => {
             </div>
           ))}
         </Carousel>
-  
+   */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           {SliderData.map(( _ , idx) => (
             <div>

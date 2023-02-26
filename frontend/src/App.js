@@ -1,9 +1,11 @@
 import "./App.css";
+import { Homediv } from "./Home/Home";
 import MainRoutes from "./Pages/MainRoutes";
 function App() {
   return (
     <>
-      <MainRoutes />
+      <Homediv />
+      {/* <MainRoutes /> */}
     </>
   );
 }
