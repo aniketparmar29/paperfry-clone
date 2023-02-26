@@ -7,8 +7,8 @@ import DropdownMenu from './components/NavbarSecond/DropdownMenu'
 export const Homediv = () => {
   return (
     <>
-      {/* <DropdownMenu/> */}
-      {/* <Navbar/> */}
+      <DropdownMenu/>
+      <Navbar/>
       <Hero/>
       <Footer/>
       </>
