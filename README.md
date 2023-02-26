@@ -42,13 +42,14 @@ ___
 | Vikram kumar | Admin Panel |
 
 
-<!-- ### Screenshots
+### Screenshots
 ___
 
-![screehshot2](https://i.ibb.co/z52LHgp/Screenshot-2022-12-12-205249.png)
-![screehshot3](https://i.ibb.co/VYzHrpY/Screenshot-2022-12-12-205322.png)
-![screehshot4](https://i.ibb.co/jWHMs68/Screenshot-2022-12-12-205210.png)
-![screehshot5](https://i.ibb.co/NV17R0b/Screenshot-2022-12-12-205224.png) -->
+![screehshot2](./frontend/ss/Home.png)
+![screehshot2](./frontend/ss/login.png)
+![screehshot2](./frontend/ss/product.png)
+![screehshot2](./frontend/ss/singelproduct.png)
+![screehshot2](./frontend/ss/footer.png)
 
 
 
