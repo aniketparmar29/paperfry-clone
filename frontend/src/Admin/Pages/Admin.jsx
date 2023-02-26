@@ -17,8 +17,6 @@ const Admin = () => {
     }
   }, []);
 
-  console.log(product);
-
   return (
     <div>
       <Flex>
@@ -29,7 +27,7 @@ const Admin = () => {
           <Box id="product">
             {product.length > 0 &&
               product.map((item) => {
-                return <ProductTable key={item.id} {...item} />;
+                return <ProductTable key={item._id} {...item} />;
               })}
           </Box>
         </Box>
