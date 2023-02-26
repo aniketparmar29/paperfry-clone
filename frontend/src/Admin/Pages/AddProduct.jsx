@@ -7,18 +7,24 @@ import logo from "../Images/logo.png";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../Redux/Admin/AdminProduct/action";
 import Sidebar from "../Components/Sidebar";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState({
-    image: "",
-    name: "",
+    images: [],
+    title: "",
     brand: "",
     category: "",
-    price: "",
-    inventory: "",
-    availability: true,
+    mrp: "",
+    discount: "",
+    in_stock: true,
   });
 
   let name, value;
@@ -31,25 +37,25 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      (product.image,
-      product.name,
+      (product.title,
       product.brand,
       product.category,
-      product.price,
-      product.inventory)
+      product.mrp,
+      product.discount)
     ) {
       dispatch(addProduct(product));
+      alert("New Product added");
+      setProduct("");
     } else {
       alert("Please fill all the details");
     }
-    setProduct("");
   };
 
   return (
     <div>
       <Sidebar />
       <div id="form">
-        <Flex onClick={() => navigate("/admin/product")} cursor="pointer">
+        <Flex onClick={() => navigate("/admin")} cursor="pointer">
           <button>
             <AiOutlineArrowLeft />
           </button>
@@ -67,8 +73,8 @@ const AddProduct = () => {
               className="form_input"
               type="url"
               placeholder="Image.url"
-              name="image"
-              value={product.image}
+              name="images"
+              value={product.images}
               onChange={getProductValue}
             />
           </div>
@@ -79,8 +85,8 @@ const AddProduct = () => {
               className="form_input"
               type="text"
               placeholder="Title"
-              name="name"
-              value={product.name}
+              name="title"
+              value={product.title}
               onChange={getProductValue}
             />
           </div>
@@ -115,20 +121,20 @@ const AddProduct = () => {
               className="form_input"
               type="number"
               placeholder="Price"
-              name="price"
-              value={product.price}
+              name="mrp"
+              value={product.mrp}
               onChange={getProductValue}
             />
           </div>
           <div>
-            <label>Inventory</label>
+            <label>Discount</label>
             <br />
             <input
               className="form_input"
               type="text"
-              placeholder="Inventory"
-              name="inventory"
-              value={product.inventory}
+              placeholder="Discount"
+              name="discount"
+              value={product.discount}
               onChange={getProductValue}
             />
           </div>

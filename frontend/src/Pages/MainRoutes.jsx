@@ -13,8 +13,8 @@ import Pricing from "../Admin/Pages/Pricing";
 import Product from "../Admin/Pages/Product";
 import Signup from "../Admin/Pages/Signup";
 import Pagenotfound from "./PagenotFound";
-import SingleProduct from './SingleProduct'
-import EditProduct from '../Admin/Pages/EditProduct';
+import SingleProduct from "./SingleProduct";
+import EditProduct from "../Admin/Pages/EditProduct";
 function MainRoutes() {
   return (
     <div>

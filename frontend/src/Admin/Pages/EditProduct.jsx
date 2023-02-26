@@ -13,18 +13,18 @@ import {
 import Sidebar from "../Components/Sidebar";
 
 const EditProduct = () => {
-  const { id } = useParams();
+  const { _id } = useParams();
   const product = useSelector((store) => store.AdminProduct.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [currentProduct, setCurrentProduct] = useState({
-    image: "",
-    name: "",
+    images: [],
+    title: "",
     brand: "",
     category: "",
-    price: "",
-    inventory: "",
+    mrp: "",
+    discount: "",
   });
 
   let name, value;
@@ -36,7 +36,7 @@ const EditProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct(id, currentProduct)).then(() =>
+    dispatch(updateProduct(_id, currentProduct)).then(() =>
       navigate("/admin/product")
     );
   };
@@ -48,11 +48,11 @@ const EditProduct = () => {
   }, [dispatch, product.length]);
 
   useEffect(() => {
-    if (id) {
-      const mall = product.find((item) => item.id == id);
+    if (_id) {
+      const mall = product.find((item) => item._id == _id);
       mall && setCurrentProduct(mall);
     }
-  }, [id, product]);
+  }, [_id, product]);
 
   return (
     <div>
@@ -76,8 +76,8 @@ const EditProduct = () => {
               className="form_input"
               type="url"
               placeholder="Image.url"
-              name="image"
-              value={currentProduct.image}
+              name="images"
+              value={currentProduct.images[0]}
               onChange={getProductValue}
             />
           </div>
@@ -88,8 +88,8 @@ const EditProduct = () => {
               className="form_input"
               type="text"
               placeholder="Title"
-              name="name"
-              value={currentProduct.name}
+              name="title"
+              value={currentProduct.title}
               onChange={getProductValue}
             />
           </div>
@@ -124,20 +124,20 @@ const EditProduct = () => {
               className="form_input"
               type="number"
               placeholder="Price"
-              name="price"
-              value={currentProduct.price}
+              name="mrp"
+              value={currentProduct.mrp}
               onChange={getProductValue}
             />
           </div>
           <div>
-            <label>Inventory</label>
+            <label>Discount</label>
             <br />
             <input
               className="form_input"
               type="text"
-              placeholder="Inventory"
-              name="inventory"
-              value={currentProduct.inventory}
+              placeholder="Discount"
+              name="discount"
+              value={currentProduct.discount}
               onChange={getProductValue}
             />
           </div>
@@ -150,10 +150,10 @@ const EditProduct = () => {
                   e.target.value === "true" ? true : false;
                 setCurrentProduct({
                   ...currentProduct,
-                  availability: newAvailability,
+                  in_stock: newAvailability,
                 });
               }}
-              value={currentProduct.availability}
+              value={currentProduct.in_stock}
             >
               <option value="true">True</option>
               <option value="false">False</option>

@@ -20,25 +20,25 @@ import {
 } from "../../Redux/Admin/AdminProduct/action";
 
 const ProductTable = ({
-  image,
-  name,
+  images,
+  title,
   brand,
   category,
-  price,
-  inventory,
-  availability,
-  id,
+  mrp,
+  discount,
+  in_stock,
+  _id,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteProduct(id)).then(() => dispatch(getProduct()));
+    dispatch(deleteProduct(_id)).then(() => dispatch(getProduct()));
   };
 
   return (
-    <TableContainer width={"80%"}>
-      <Table variant="striped">
+    <TableContainer width={"60%"}>
+      <Table variant="striped" cellSpacing={"100px"}>
         <Thead>
           <Tr>
             <Th>Image</Th>
@@ -46,7 +46,7 @@ const ProductTable = ({
             <Th>Price</Th>
             <Th>Brand</Th>
             <Th>Category</Th>
-            <Th>Inventory</Th>
+            <Th>Discount</Th>
             <Th>Availability</Th>
             <Th>Edit</Th>
           </Tr>
@@ -54,15 +54,21 @@ const ProductTable = ({
         <Tbody>
           <Tr>
             <Td>
-              <img src={image} alt="" />
+              <div
+                style={{
+                  width: "100%",
+                }}
+              >
+                <img src={images[0]} alt="" width="100%" />
+              </div>
             </Td>
-            <Td>{name}</Td>
-            <Td>₹ {price}</Td>
+            <Td>{title}</Td>
+            <Td>₹ {mrp}</Td>
             <Td>{brand}</Td>
             <Td>{category}</Td>
-            <Td>{inventory}</Td>
+            <Td>{discount}</Td>
             <Td>
-              {availability ? (
+              {in_stock ? (
                 <h3 style={{ color: "green" }}>Available</h3>
               ) : (
                 <h3 style={{ color: "red" }}>Out of Stock</h3>
@@ -71,7 +77,7 @@ const ProductTable = ({
             <Td>
               <button
                 id="edit"
-                onClick={() => navigate(`/admin/editproduct/${id}`)}
+                onClick={() => navigate(`/admin/editproduct/${_id}`)}
               >
                 <AiFillEdit />
               </button>
