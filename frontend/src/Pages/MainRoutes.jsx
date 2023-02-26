@@ -16,6 +16,7 @@ import Product from "../Admin/Pages/Product";
 import Pagenotfound from "./PagenotFound";
 import SingleProduct from './SingleProduct'
 import EditProduct from '../Admin/Pages/EditProduct';
+import ProductCart from '../CW/pages/productCart'
 function MainRoutes() {
   return (
     <div>
@@ -39,6 +40,7 @@ function MainRoutes() {
         <Route path="/admin/editproduct/:id" element={<EditProduct />} />
         <Route path={"/admin/addproduct"} element={<AddProduct />} />
         <Route path="*" element={<Pagenotfound />}></Route>
+        <Route path="/cart" element={<ProductCart/>}></Route>
       </Routes>
     </div>
   );

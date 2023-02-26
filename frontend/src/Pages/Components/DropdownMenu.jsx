@@ -21,31 +21,34 @@ function DropdownMenu() {
         <div
           className="mainDiv">
           <div className="category">
-            <Link to={"/products/furniture"} className="categoryP" onMouseOut={()=>setNav(false)} onMouseOver={() => {setNav(true) }}> Furniture</Link>
+            <Link to='/product/sofasets' className="categoryP" onMouseOut={()=>setNav(false)} onMouseOver={() => {setNav(true) }}>Furniture</Link>
           </div>
           <div className="category">
-            <Link to={"/products/sofasets"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Sofas & Recliners</Link>
+            <Link to={"/product/recliner"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Sofas & Recliners</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Cabinetry</p>
+            <Link to={"/product/Collectibles"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Cabinetry</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Beds</p>
+            <Link to={"/product/glasses"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Beds</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Mattresses</p>
+            <Link to={"/product/mounts"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Mattresses</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Furnishings</p>
+            <Link to={"/product/bathmets"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Furnishings</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Decor</p>
+            <Link to={"/product/lawsonsofasets"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Decor</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Lighting</p>
+            <Link to={"/product/modernsofas"} onMouseOut={()=>setNav(false)}  onMouseOver={() => {setNav(true) }}>Lighting</Link>
           </div>
           <div className="category">
-            <p onMouseOut={()=>setNav(false)} onMouseOver={() => {setNav(true) }}>Appliances</p>
+            <Link to={"/product/queenbed"} onMouseOut={()=>setNav(false)} onMouseOver={() => {setNav(true) }}>Appliances</Link>
+          </div>
+          <div className="category">
+            <Link to={"/product/Bucketsofas"} onMouseOut={()=>setNav(false)} onMouseOver={() => {setNav(true) }}>Bucketsofas</Link>
           </div>
           <div className="w-32 flex justify-around relative" >
           <PermIdentityIcon className="" onClick={handleProfileMenu} />

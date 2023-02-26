@@ -17,7 +17,7 @@ const ImageCarousel = ({ images }) => {
   };
   
   return (
-      <div className="relative">
+      <div className="sticky top-0">
         <div className={'relative w-46 h-56 overflow-hidden rounded-lg md:h-96 md:w-86'}>
           {currentImage && 
           
@@ -29,18 +29,18 @@ const ImageCarousel = ({ images }) => {
             />
           }
           <div className=" flex  items-center">
-            <button
+            <div
               className="p-1 font-bold border-2 bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 absolute top-1/2 transform -translate-y-1/2 left-0"
               onClick={handlePreviousClick}
             >
               {"<"}
-            </button>
-            <button
+            </div>
+            <div
               className="p-1 font-bold border-2 bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 absolute top-1/2 transform -translate-y-1/2 right-0"
               onClick={handleNextClick}
             >
               {">"}
-            </button>
+            </div>
           </div>
         </div>
         <div className="flex jmt-4">
@@ -49,7 +49,7 @@ const ImageCarousel = ({ images }) => {
             key={index}
             src={image}
             alt={`Thumbnail ${index}`}
-            className={`w-24 h-24 object-contain border hover:border-orange-600  mx-1 cursor-pointer ${
+            className={`w-24 h-24 mt-4 ml-10 object-contain border-2 hover:border-orange-600  mx-1 cursor-pointer ${
               index === currentIndex ? "border-blue-500" : ""
             }`}
             onMouseOver={() => handleThumbnailClick(index)}

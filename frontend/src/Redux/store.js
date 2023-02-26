@@ -3,6 +3,7 @@ import { reducer as AuthReducer } from "./AuthReducer/reducer";
 import { reducer as ProductReducer } from "./ProductReducer/reducer";
 import { reducer as AdminProduct } from "./Admin/AdminProduct/reducer";
 import { reducer as AdminLogin } from "./Admin/Login/reducer";
+import CartReducer from'./CartReducer/reducer';
 import { userAuth } from "./userAuth/user.reducer";
 import thunk from "redux-thunk";
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   ProductReducer,
   AdminProduct,
   AdminLogin,
+  CartReducer,
   userAuth
 });
 

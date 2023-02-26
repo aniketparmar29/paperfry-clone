@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getProducts } from '../Redux/ProductReducer/action';
 import ProductList from './ProductList';
 import {FaTimes,FaFilter} from 'react-icons/fa'
+import Navbar from '../Pages/Components/Navbar'
+import Footer from '../Pages/Components/Footer'
 const ProductPage = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.ProductReducer.opp);
@@ -13,7 +15,7 @@ const ProductPage = () => {
   const isMobileOrTablet = /Mobile|Tablet/i.test(navigator.userAgent);
 
   useEffect(() => {
-    // dispatch(getProducts(query));
+    dispatch(getProducts(query));
   }, [dispatch, query]);
 
   const handleCheckboxChange = (event) => {
@@ -35,8 +37,8 @@ const ProductPage = () => {
   
 
   const brandCheckboxes = Array.from(new Set(products.map((product) => product.brand))).map((brand) => (
-    <div key={brand}>
-      <label>
+    <div key={brand} >
+      <label className="text-xs">
         <input
           type="checkbox"
           name={brand}
@@ -50,9 +52,11 @@ const ProductPage = () => {
   ));
 
   return (
+    <>
+    <Navbar/>
     <div>
       <span className='text-slate-500 text-sm ml-[5%]'>Home<span className='font-bold px-5'>&#62;</span>{query}</span>
-      <h1 className='text-2xl font-bold text-center mb-32'>{query}</h1>
+      <h1 className='text-2xl font-bold text-center mt-10 mb-28'>{query}</h1>
       <hr />
       <div className="flex gap-x-4">
         <div className='border-r-2 px-[1%] lg:px-10'>
@@ -91,6 +95,8 @@ const ProductPage = () => {
         </div>
       )}
     </div>
+    <Footer/>
+      </>
   );
   
 };

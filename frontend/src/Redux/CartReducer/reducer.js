@@ -1,33 +1,63 @@
-// notes --> have to include the reducer to combined reducer
+import { ADD_TO_CART, CART_ERROR, CART_LOADING, GET_CART, REMOVE_FROM_CART, UPDATE_TO_CART } from "./actionTypes"
 
-
-
-import * as actionTypes from "./actionTypes";
 
 const initialState = {
-    items:[],
-    itemsPriceTotal:0,
-    totalItems:0,
-    totalQuantity:0
+    loading : false,
+    error : false,
+    cart : []
 }
 
-
-export const cart = (state=initialState,action)=>{
-    switch(action.type){
-        case actionTypes.ADD_CART_ITEM:
-            let tempData = action.data;
-            tempData.quantity = 1;
-            tempData.itemTotal = tempData.price.*tempData.quantity;
-
+const CartReducer = (state=initialState,{type,payload})=>{
+    switch(type){
+        case CART_LOADING : {
+            return{
+                ...state,
+                loading : true,
+                error : false
+            }
+        }
+        case CART_ERROR : {
+            return{
+                ...state,
+                loading:false,
+                error:true
+            }
+        }
+        case ADD_TO_CART :{
             return {
                 ...state,
-                item:[...state.item,tempData],
-                itemsPriceTotal:state.item.reduce((a,b)=>a+(b.itemTotal||0,0)),
-                totoalItems:state.items.length,
-                totalQuantity:state.item.reduce((a,b)=>a+(b.quantity)||0,0)
+                loading:false,
+                cart : [...state.cart,payload]
             }
-        default:
-            return state;
+        }
+        case GET_CART : {
+            return {
+                ...state,
+                loading:false,
+                cart : payload
+            }
+        }
+        case REMOVE_FROM_CART : 
+        let deleted=state.cart.filter((e)=>{
+            return e.id!==payload
+          })
+          return {
+            ...state,
+            cart:deleted
+          };
+         case UPDATE_TO_CART:
+            let updated=state.cart.map((e)=>{
+              return e.id==payload.id?{...e,...payload}:e
+            });
+            return {
+              ...state,
+              cart:updated
+            };
+        default:{
+                return state
+            }
     }
 }
 
+
+export default CartReducer
