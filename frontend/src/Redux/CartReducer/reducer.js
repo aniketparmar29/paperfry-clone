@@ -27,14 +27,14 @@ const CartReducer = (state=initialState,{type,payload})=>{
             return {
                 ...state,
                 loading:false,
-                cart : [...state.cart,payload]
+               cart:[payload]
             }
         }
         case GET_CART : {
             return {
                 ...state,
                 loading:false,
-                cart : payload
+                cart :payload
             }
         }
         case REMOVE_FROM_CART : 
@@ -43,7 +43,7 @@ const CartReducer = (state=initialState,{type,payload})=>{
           })
           return {
             ...state,
-            cart:deleted
+            cart:[deleted]
           };
          case UPDATE_TO_CART:
             let updated=state.cart.map((e)=>{

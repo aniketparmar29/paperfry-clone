@@ -10,112 +10,57 @@ import {
   Button,
   Text,
   Input,
-  useToast,
+  useToast, 
   HStack,
   Grid,
 } from "@chakra-ui/react";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteCart, getCartItems } from "../../Redux/CartReducer/action";
-let api = "https://long-plum-coyote-gown.cyclic.app/cart";
-
+import { getCartItems, reqInstance, updateCart} from "../../Redux/CartReducer/action";
 const ProductCart = () => {
-  const [quant, setQuant] = useState(0);
+  const [qty, setQty] = useState(1)
+  const {cart} = useSelector(val=>val.CartReducer)
   const dispatch = useDispatch();
-  const [data, setData] = useState([]);
   const [amt, setAmt] = useState(0);
   const [samt, setsAmt] = useState(0);
-  const [refresh, setRefresh] = useState(false);
   const [applied, setApplied] = useState(false);
   const navigate = useNavigate();
   const [value, setValue] = useState("");
   const toast = useToast();
-  const [count, setCount] = useState(0);
-
-  const cartItems = useSelector((store) => {
-    return store.cart.cart;
-  });
-  console.log(cartItems)
-
-  useEffect(() => {
-    dispatch(getCartItems());
-
-    fetch(api)
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(data);
-        setData(data);
-        let q = 0;
-        let s = 0;
-        let p = 0;
-        for (let j = 0; j < data.length; j++) {
-          q += data[j].quantity;
-          p += data[j].quantity * data[j].price;
-          s += data[j].strike_price * data[j].quantity;
-        }
-        setQuant(q);
-        setAmt(p);
-        setsAmt(s);
-      });
-  }, []);
-  //console.log(data);
+  const [cartItems, setCartitems] = useState([])
+  
+  useEffect(()=>{
+   dispatch(getCartItems())
+  },[dispatch])
 
 
+  useEffect(()=>{
+  if(cart){
+    setCartitems(cart)
+  }
+  },[cart])
   const removeProduct = (id) => {
-    dispatch(deleteCart(id));
-    setCount((prev) => prev + 1);
+   let updatedCart = cart.filter(el=>{
+      if(el!==id){
+        return el
+      }
+      }
+      )
+    dispatch(updateCart({cart:updatedCart}))
+   };
+  let handleInc = (el => {
+    setQty(val=>val+1)
+  })
 
-    setTimeout(() => {
-      dispatch(getCartItems);
-      window.location.reload();
-    }, 500);
-  };
+  let handleDec = async (el) => {
 
-  let handleInc = async (id, price, quantity) => {
-    let res = await fetch(`${api}/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ quantity: quantity + 1 }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        res.json()
-        window.location.reload();
-      })
-      .then((res) => {
-        console.log(res);
-        
-      });
-    console.log(id, api);
-
-    //setRefresh(refresh)
-  };
-
-  let handleDec = async (id, price, quantity) => {
-    if (quantity == 1) {
-      removeProduct(id);
-    } else {
-      let res = await fetch(`${api}/${id}`, {
-        method: "PATCH",
-        body: JSON.stringify({ quantity: quantity - 1 }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => {
-          res.json()
-          window.location.reload();
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    }
+    setQty(val=>val>1?val=val-1:val=1)
   };
 
   const handlecoup = () => {
-    if (value == "vicky101") {
+    if (value === "masai") {
       setApplied(true);
       return toast({
         title: "YAY!",
@@ -170,14 +115,14 @@ const ProductCart = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {cartItems &&
-                cartItems.map((ele) => {
+              {cartItems.length>0?
+                cartItems?.map((ele) => {
                   return (
                     <Tr
                       boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                       key={ele.id}>
                       <Td fontSize={"xs"} fontWeight="bold" w="15%" p="5px">
-                        <Image src={ele.images} w="100%" />
+                        <Image src={ele.images[0]} w="100%" />
                       </Td>
                       <Td
                         fontSize={"xs"}
@@ -202,9 +147,9 @@ const ProductCart = () => {
                           display={"flex"}
                           flexDirection="column"
                           justifyContent={"flex-start"}>
-                          <Text>₹{ele.price * ele.quantity}.00</Text>
+                          <Text>₹{ele.price_offer}.00</Text>
                           <Text color={"gray"} textDecoration={"line-through"}>
-                            ₹{ele.strike_price * ele.quantity}.00
+                            ₹{ele.mrp}.00
                           </Text>
                         </Box>
                       </Td>
@@ -220,24 +165,24 @@ const ProductCart = () => {
                           <span
                             style={{ cursor: "pointer" }}
                             onClick={() =>
-                              handleDec(ele.id, ele.price, ele.quantity)
+                              handleDec(ele)
                             }>
                             -
                           </span>
                           <Text display="inline" px="2px">
-                            {ele.quantity}
+                            {qty}
                           </Text>
                           <span
                             style={{ cursor: "pointer" }}
                             onClick={() =>
-                              handleInc(ele.id, ele.price, ele.quantity)
+                              handleInc(ele)
                             }>
                             +
                           </span>
                         </Box>
 
                         <Flex gap="2px" p="2px">
-                          <Button
+                          <Box
                             color={"white"}
                             bgColor="#004d3d"
                             onClick={() => removeProduct(ele.id)}
@@ -247,12 +192,12 @@ const ProductCart = () => {
                             padding="19px"
                             fontSize="20px">
                             Remove
-                          </Button>
+                          </Box>
                         </Flex>
                       </Td>
                     </Tr>
                   );
-                })}
+                }):""}
             </Tbody>
           </Table>
         </Box>
@@ -310,11 +255,11 @@ const ProductCart = () => {
                 }}>
                 Checkout
               </Button>
-              <Button bgColor={"rgb(255,255,255)"}>
+              {/* <Button bgColor={"rgb(255,255,255)"}>
                 <Image
-                  src="data:image/png;base64,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"
+                  src={}
                   height="100%"></Image>
-              </Button>
+              </Button> */}
             </Box>
             <Box
               p="30px"
