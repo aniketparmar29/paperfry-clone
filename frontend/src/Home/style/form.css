@@ -1,0 +1,72 @@
+.form{
+    border: none;
+    border-bottom: 0.1px solid black;
+    width: 300px;
+} 
+.number{
+    border: none;
+    border-bottom: 0.1px solid black;
+}
+.reg{
+    width: 300px;
+    height: 40px;
+    background-color: orangered ;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+.btn-num{
+    border: none;
+    background-color: transparent;
+    color: orangered;
+    margin-left: 40px;
+}
+.popup{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.left img{
+    height: 450px;
+}
+.right{
+    padding-left: 50px;
+}
+label{
+    font-size: small;
+    color: gray;
+}
+.icon{
+    width: 25px;
+    margin-left: 5px;
+}
+.signup{
+    width: 300px;
+    height: 40px;
+    background-color: transparent;
+    color: orangered;
+    border: 0.1px solid gray;
+    padding: 10px;
+}
+.popup{
+    border: 0.1px solid black;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+}
+.quit{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.quit button{
+    background-color: transparent;
+    border: none;
+}
+.popup{
+    background-color: white;
+}
+.close{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: larger;
+    font-weight: 900;
+    margin-right: 5px;
+}
