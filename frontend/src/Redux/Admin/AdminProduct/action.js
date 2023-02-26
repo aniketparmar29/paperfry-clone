@@ -1,4 +1,6 @@
 import axios from "axios";
+import { base_url } from "../../../Admin/Components/url";
+
 import {
   ADD_PRODUCT_ERROR,
   ADD_PRODUCT_REQUEST,
@@ -17,9 +19,9 @@ import {
 const getProduct = () => (dispatch) => {
   dispatch({ type: GET_PRODUCT_REQUEST });
   return axios
-    .get("http://localhost:8080/product")
+    .get(`${base_url}/products`)
     .then((res) => {
-      dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
+      dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data.data });
     })
     .catch((err) => dispatch({ type: GET_PRODUCT_ERROR }));
 };
@@ -27,17 +29,27 @@ const getProduct = () => (dispatch) => {
 const addProduct = (payload) => (dispatch) => {
   dispatch({ type: ADD_PRODUCT_REQUEST });
   return axios
-    .post(`http://localhost:8080/product`, payload)
-    .then((res) => dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data }))
+    .post(`${base_url}/products`, payload, {
+      headers: {
+        Authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    })
+    .then((res) =>
+      dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data.data })
+    )
     .catch((err) => dispatch({ type: ADD_PRODUCT_ERROR }));
 };
 
-const updateProduct = (id, payload) => (dispatch) => {
+const updateProduct = (_id, payload) => (dispatch) => {
   dispatch({ type: UPDATE_PRODUCT_REQUEST });
   return axios
-    .patch(`http://localhost:8080/product/${id}`, payload)
+    .patch(`${base_url}/products/${_id}`, payload, {
+      headers: {
+        Authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    })
     .then((res) =>
-      dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: res.data })
+      dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: res.data.data })
     )
     .catch((err) => dispatch({ type: UPDATE_PRODUCT_ERROR }));
 };
@@ -45,7 +57,11 @@ const updateProduct = (id, payload) => (dispatch) => {
 const deleteProduct = (id) => (dispatch) => {
   dispatch({ type: DELETE_PRODUCT_REQUEST });
   return axios
-    .delete(`http://localhost:8080/product/${id}`)
+    .delete(`${base_url}/products/${id}`, {
+      headers: {
+        Authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    })
     .then((res) => dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id }))
     .catch((err) => dispatch({ type: DELETE_PRODUCT_ERROR }));
 };
