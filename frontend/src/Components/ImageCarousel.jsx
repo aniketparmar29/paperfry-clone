@@ -3,7 +3,6 @@ import tw from 'tailwind-styled-components';
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images[currentIndex];
-  const [glassPosition, setGlassPosition] = useState({ x: 0, y: 0 });
 
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
@@ -16,36 +15,10 @@ const ImageCarousel = ({ images }) => {
   const handleNextClick = () => {
     setCurrentIndex((currentIndex + 1) % images.length);
   };
-  const ImageWrapper = tw.div`
-  relative
-`;
-
-const MagnifyingGlass = tw.div`
-  absolute
-  z-50
-  rounded-full
-  border
-  border-gray-500
-  w-16
-  h-16
-  pointer-events-none
-  transform
-  -translate-x-1/2
-  -translate-y-1/2
-`;
-
-const Image = tw.img`
-  block
-  w-full
-  h-auto
-  transition-all
-  duration-200
-  cursor-zoom-in
-  hover:scale-150
-`;
+  
   return (
       <div className="relative">
-        <div className={'w-[100%] h-[30%] border-gray-300 relative'}>
+        <div className={'relative w-46 h-56 overflow-hidden rounded-lg md:h-96 md:w-86'}>
           {currentImage && 
           
             <img

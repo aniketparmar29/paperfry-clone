@@ -23,7 +23,7 @@ function ProductCard({ product ,query}) {
     }
   }
   return (
-    <div className="w-80">
+    <div className="w-80 py-5">
       <div style={{ position: "relative" }}>
       <Link to={`/product/op/${product._id}`}>
         <img src={product.images[0] || product.images[1] || product.images[2] || product.images[3] || product.images[4] || `https://source.unsplash.com/random/?${query}` || "https://ii1.pepperfry.com/img/grey.gif"} alt={product.title} />
@@ -50,6 +50,7 @@ function ProductCard({ product ,query}) {
       <h5 className="text-[rgb(104,175,93)] text-base text-left font-semibold">
         {product.discount}
       </h5>
+      <p className='text-sm'>Ship in <span className='font-bold'>1 day</span></p>
       <style>{`
         .w-80:hover button {
           opacity: 1;
