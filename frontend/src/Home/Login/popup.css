@@ -1,0 +1,12 @@
+.popup-div{
+    padding: 2px;
+    min-height: 100vh;
+    margin-left: 450px;
+    position: fixed;
+    z-index: 100;
+}
+.login-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,10 @@
+.thanks h1,h2,h3{
+    font-weight: 700;
+    color: orangered;
+}
+.thank{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
