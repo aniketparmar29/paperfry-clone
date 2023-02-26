@@ -5,6 +5,7 @@ import { BiHelpCircle } from "react-icons/bi";
 import { RiContactsLine } from "react-icons/ri";
 import { BsHeart } from "react-icons/bs";
 import { BsCartDash } from "react-icons/bs";
+import Cw from '../../../CW/Cw';
 
 const Navbar2 = () => {
   return (
@@ -18,12 +19,17 @@ const Navbar2 = () => {
                   <input className={styles.input} type="" name="" value="" />
       
 
-              <div>
+              {/* <div>
                   <BiHelpCircle />
-                  <RiContactsLine />
-                  <BsHeart />
+                  <RiContactsLine /> */}
+                  <div class="text-center">
+                     <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+                        Show navigation
+                     </button>
+                  </div>
+                  {/* <BsHeart/>
                   <BsCartDash/>
-              </div>
+              </div> */}
           </div> 
     </div>
   )
