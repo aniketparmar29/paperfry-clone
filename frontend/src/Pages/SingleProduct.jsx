@@ -7,6 +7,7 @@ import {FaRegShareSquare} from 'react-icons/fa'
 import {MdDesignServices} from 'react-icons/md'
 import {CiDeliveryTruck} from 'react-icons/ci'
 import Navbar from '../Pages/Components/Navbar'
+import DropdownMenu from '../Pages/Components/DropdownMenu'
 import Footer from '../Pages/Components/Footer'
 import { BsHeart } from 'react-icons/bs';
 import { updateCart } from '../Redux/CartReducer/action';
@@ -45,7 +46,7 @@ function SingleProduct() {
     return         <img className="w-[50%] m-auto" src="https://ii1.pepperfry.com/img/grey.gif" alt="loading" />;
   }
   return (
-    <><Navbar/>
+    <><DropdownMenu/>
     <div className=" lg:flex xl:flex md:flex  gap-4 justify-between w-[90%] m-auto">
 
       <div className="product-images w-[50%]">
