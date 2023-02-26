@@ -23,7 +23,7 @@ const ImageCarousel = ({ images }) => {
           
             <img
               src={currentImage}
-              alt="Current Image"
+              alt="Current img"
               className="w-full h-full object-contain"
               
             />

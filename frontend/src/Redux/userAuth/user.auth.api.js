@@ -10,7 +10,6 @@ export const registerUserApi = async(data)=>{
 }
 export const loginUserApi = async(data)=>{
     try{    
-        console.log(data)
         const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,data)
         return res.data
     }catch(err){

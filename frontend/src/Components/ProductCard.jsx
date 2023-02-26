@@ -2,7 +2,16 @@ import React from 'react';
 import { BsHeart } from 'react-icons/bs';
 import RatingBar from './RatingBar';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCart } from '../Redux/CartReducer/action';
 function ProductCard({ product ,query}) {
+  const user= useSelector(val=>val.userAuth)
+  const {cart} = useSelector(val=>val.CartReducer)
+  const dispatch = useDispatch()
+  const hanleAddTocart = (product)=>{
+      // user?.user?.cart.push(product._id)
+     dispatch( updateCart({cart:[...cart,product._id]}))
+  }
   if(product.title==="Diego Fabric 3 Seater Sofa In Denim Blue Colour"){
     return;
   }
@@ -29,7 +38,7 @@ function ProductCard({ product ,query}) {
       <Link to={`/product/op/${product._id}`}>
         <img src={product.images[0] || product.images[1] || product.images[2] || product.images[3] || product.images[4] || `https://source.unsplash.com/random/?${query}` || "https://ii1.pepperfry.com/img/grey.gif"} alt={product.title} />
         </Link>
-        <div className="bg-orange-500 adc text-white font-bold z-10 p-3 rounded absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 transition duration-300">
+        <div onClick={()=>hanleAddTocart(product)} className="bg-orange-500 text-white font-bold z-10 p-3 rounded absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 transition duration-300">
           Add To Cart
         </div>
         <div className="wishlist absolute top-0 right-0 mt-2 mr-2 text-2xl cursor-pointer">

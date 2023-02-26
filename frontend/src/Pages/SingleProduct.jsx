@@ -9,15 +9,19 @@ import {CiDeliveryTruck} from 'react-icons/ci'
 import Navbar from '../Pages/Components/Navbar'
 import Footer from '../Pages/Components/Footer'
 import { BsHeart } from 'react-icons/bs';
+import { updateCart } from '../Redux/CartReducer/action';
+import {useDispatch, useSelector} from 'react-redux'
 function SingleProduct() {
+  const user= useSelector(val=>val.userAuth)
+  const {cart} = useSelector(val=>val.CartReducer)
+  const dispatch = useDispatch()
   const {query, id } = useParams();
   const [product, setProduct] = useState(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const rating = (Math.random() * 5) + 1;
   const rat = Math.floor(Math.random()*500)+1;
   let ratcout;
   for(let key in product){
-    if(key=="rating-count"){
+    if(key==="rating-count"){
       ratcout=product[key];
     }else{
       ratcout=rat;
@@ -29,8 +33,8 @@ function SingleProduct() {
       .then(productData => setProduct(productData.data))
       .catch(error => console.error(error));
   }, [id]);
-  function handleAddToCart() {
-    // Add product to cart
+  function handleAddToCart(id) {
+   dispatch( updateCart({cart:[...cart,id]}))
   }
 
   function handleBuyNow() {
@@ -105,7 +109,7 @@ function SingleProduct() {
             <option value="5">5</option>
           </select>
           </div>
-          <div className='p-4 border-2 px-12 border-black'>ADD TO CART</div>
+          <div onClick={()=>handleAddToCart(id)} className='p-4 border-2 px-12 border-black'>ADD TO CART</div>
           <div className='p-4 border-2 px-14 text-lg font-bold bg-orange-600 text-white'>BUY NOW</div>
         </div>
 
