@@ -1,6 +1,7 @@
 import React from 'react'
 import { HomeContainer, RectangularBlock, Shop, Eyeing, Shoppee, New, HomeDecor, BlueBox, TopBrand, TwoBigImages, ImageDiv, Costumers, NeedHelpBuying  } from '../styles/HeroCss'
 import Slider from './Slider'
+import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
     <>
@@ -13,20 +14,32 @@ const Hero = () => {
             <h1>Shop By Room</h1>
             <Shop>
                 <div>
+                    <Link to={"/product/glasses"}>
+
                     <img src="https://ii1.pepperfry.com/media/wysiwyg/banners/Homepage_Rooms_Section_Web_1_2x_31032022.jpg" alt={"Living"} />
                     <div className="title">Living Room</div>
+                    </Link>
                 </div>
                 <div>
+                    <Link to={"/product/Collectibles"}>
+
                     <img src="https://ii2.pepperfry.com/media/wysiwyg/banners/Homepage_Rooms_Section_Web_2_2x_31032022.jpg" alt={"WFH"} />
                     <div className="title">Work From Home</div>
+                    </Link>
                 </div>
                 <div>
+                    <Link to={"/product/bathmets"}>
+
                     <img src="https://ii3.pepperfry.com/media/wysiwyg/banners/Homepage_Rooms_Section_Web_3_2x_31032022.jpg" alt={"Bedroom"} />
                     <div className="title">Bedroom</div>
+                    </Link>
                 </div>
                 <div>
+                    <Link to={"/product/mounts"}>
+
                     <img src="https://ii1.pepperfry.com/media/wysiwyg/banners/Homepage_Rooms_Section_Web_4_2x_31032022.jpg" alt={"KidsRoom"} />
                     <div className="title">Kids Room</div>
+                    </Link>
                 </div>
             </Shop>
             <h1>What's Everyone Eyeing</h1>

@@ -53,7 +53,7 @@ function DropdownMenu() {
           <div className="w-32 flex justify-around relative" >
           <PermIdentityIcon className="" onClick={handleProfileMenu} />
           <FavoriteBorderOutlinedIcon className="" />
-          <ShoppingCartOutlinedIcon className="" />
+          <Link to="/cart"><ShoppingCartOutlinedIcon className="" /></Link>
            {profileDtl&&<div className='absolute top-[100%] w-full h-20 border-2 border-gray-200 z-50 text-black bg-white rounded-xl'>
             {
               isAuth?<div className="flex flex-col justify-center items-center" >
