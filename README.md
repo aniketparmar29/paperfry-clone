@@ -48,10 +48,24 @@ ___
 ### Screenshots
 ___
 
+*Home Page
+
 ![screehshot2](./frontend/ss/Home.png)
+
+*Login Page
+
 ![screehshot2](./frontend/ss/login.png)
+
+*Product Page
+
 ![screehshot2](./frontend/ss/product.png)
+
+*Single Product Page
+
 ![screehshot2](./frontend/ss/singelproduct.png)
+
+*footer part
+
 ![screehshot2](./frontend/ss/footer.png)
 
 
