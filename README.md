@@ -48,25 +48,32 @@ ___
 ### Screenshots
 ___
 
-*Home Page
+<h2>Home Page</h2>
 
-![screehshot2](./frontend/ss/Home.png)
+<img width="682" alt="Home" src="https://user-images.githubusercontent.com/80110392/221533362-aa398d90-6bcf-4267-9d4a-1c7b8d14b84d.png">
 
-*Login Page
 
-![screehshot2](./frontend/ss/login.png)
 
-*Product Page
+<h2>Login Page</h2>
 
-![screehshot2](./frontend/ss/product.png)
+<img width="646" alt="login" src="https://user-images.githubusercontent.com/80110392/221533419-5030614d-8bee-4227-bbb9-934111e0e505.png">
 
-*Single Product Page
 
-![screehshot2](./frontend/ss/singelproduct.png)
+<h2>Product Page</h2>
 
-*footer part
+<img width="669" alt="product" src="https://user-images.githubusercontent.com/80110392/221533493-da30e817-689b-429e-b7da-fd9304574825.png">
 
-![screehshot2](./frontend/ss/footer.png)
+<h2>Single Product Page</h2>
+
+<img width="681" alt="singelproduct" src="https://user-images.githubusercontent.com/80110392/221533527-d6f551b6-1b8a-4247-a19c-fb2f338d8b80.png">
+
+
+<h2>footer part</h2>
+
+<img width="677" alt="footer" src="https://user-images.githubusercontent.com/80110392/221533549-17991938-7ca6-4204-bcb8-0ad901701ba1.png">
+
+
+
 
 
 
